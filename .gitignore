@@ -1,0 +1,3 @@
+spam_classifier/sms_spam_collection/SMSSpamCollection
+datasets/*
+.ipynb_checkpoints
