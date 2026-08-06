@@ -41,3 +41,32 @@ Key parameters for refining the feature set:
 Topics learned:
 - *CountVectorizer* from sickit-learn. Converts collection of documents into a matrix of term coutns, where each row represents a message and each column to a term.
 
+### Training and Evaluation
+
+                  Raw text messages
+                         | 
+                         ▼
+                GridSearchCV begins
+                         │
+      ┌──────────────────┼──────────────────┐
+      │                  │                  │
+ alpha=0.01         alpha=0.10        alpha=0.15 ...
+      │                  │                  │
+      ▼                  ▼                  ▼
+  5-fold CV         5-fold CV         5-fold CV
+      │                  │                  │
+ Average F1         Average F1         Average F1
+      │                  │                  │
+      └──────────────────┼──────────────────┘
+                         ▼
+              Select highest average F1
+                         ▼
+     Retrain the entire pipeline on all data
+                         ▼
+                 best_estimator_
+
+Topics learned:
+
+- Pipeline to simplify the feature extraction and training in one step;
+- Differences between **parameters** and **hyperparameters**;
+- **GridSearchCV** is a tool in scikit-learn that automatically tries different hyperparameter combinations and tells you which one performs best using cross-validation. It was used to evaluate the model performance(f1) based on different hyperparameters (in this case, alpha from MultinomialNB). It basically choose the best model after training it with the values of hyperparameters specified.

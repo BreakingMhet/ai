@@ -1,3 +1,4 @@
 spam_classifier/sms_spam_collection/SMSSpamCollection
 datasets/*
 .ipynb_checkpoints
+spam_classifier/spam_detection_model.joblib
